@@ -28,7 +28,7 @@ LLI * inserir_inicio(LLI *inicio, int valor){ /* O(1) */
 	return lli;
 }
 
-int buscar(LLI *inicio, int v){ /* O(n)*/
+int buscar(LLI *inicio, int v){ /* O(n) */
 	LLI *current = inicio;
 	while(current)
 	{
@@ -41,7 +41,7 @@ int buscar(LLI *inicio, int v){ /* O(n)*/
 	return 0;
 }
 
-LLI * mover_maior_fim(LLI *inicio)
+LLI * mover_maior_fim(LLI *inicio) /* O(n) */
 {
 	LLI * candidato = inicio;
 	LLI * auxiliar = inicio;
@@ -78,6 +78,18 @@ LLI * mover_maior_fim(LLI *inicio)
 	return inicio;
 }
 
+int quantidade (LLI *inicio) /* O(n) */
+{
+	int quantity = 1;
+	LLI * atual = inicio;
+	while(atual->proximo){
+		++quantity;
+		atual = atual->proximo;
+	}
+	
+	return quantity;
+}
+
 void imprimir_lista(LLI *inicio){
 	int posicao = 0;
 	while(inicio)
@@ -91,7 +103,7 @@ int main(){
 	LLI *inicio = (LLI *)malloc(sizeof(LLI));
 	int i;
 	inicio = inserir_inicio(NULL, FIRSTNUMBER);
-	for (i = 2; i < 20; i++) /* Inserts 20 multiples of seven to start working with.*/
+	for (i = 2; i <= 20; i++) /* Inserts 20 multiples of seven to start working with.*/
 	{
 		inicio = inserir_inicio(inicio, FIRSTNUMBER*i);
 	}
@@ -105,6 +117,8 @@ int main(){
 	printf("CHECAR se 49 está na lista: %d\n", buscar(inicio, 49));
 
 	printf("MOVER O MAIOR PARA O FIM DA LISTA. AQUI VAI COMO FICOU A LISTA DEPOIS DA OPERAÇÃO\n");
+	
+	printf("quantidade itens na lista: %d\n", quantidade(inicio));
 
 	inicio = mover_maior_fim(inicio);
 	imprimir_lista(inicio);
