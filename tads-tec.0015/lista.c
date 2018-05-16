@@ -104,7 +104,7 @@ int main(){
 
 	printf("CHECAR se 49 está na lista: %d\n", buscar(inicio, 49));
 
-	printf("MOVER O MENOR PARA O FIM DA LISTA. AQUI VAI COMO FICOU A LISTA DEPOIS DA OPERAÇÃO\n");
+	printf("MOVER O MAIOR PARA O FIM DA LISTA. AQUI VAI COMO FICOU A LISTA DEPOIS DA OPERAÇÃO\n");
 
 	inicio = mover_maior_fim(inicio);
 	imprimir_lista(inicio);
