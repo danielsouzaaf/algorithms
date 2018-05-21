@@ -8,17 +8,10 @@ typedef struct LL_Int{
   struct LL_Int *proximo; 
 }LLI;
  
-/*struct LDL_Int{ 
-  int valor; 
-  struct LDL_Int *proximo; 
-};
-struct ListaDuplaInt{ 
-  LDL_Int *primeiro; 
-  LDL_Int *ultimo; 
-};*/
-
-
-
+typedef struct ListaDuplaInt{ 
+  LLI *primeiro; 
+  LLI *ultimo; 
+}LDI;
 
 LLI * inserir_inicio(LLI *inicio, int valor){ /* O(1) */
 
@@ -88,6 +81,20 @@ int quantidade (LLI *inicio) /* O(n) */
 	}
 	
 	return quantity;
+}
+
+int remover_ultimo(LDI *lista) /* O(n) */
+{
+		LLI *candidato = lista->primeiro;
+		while (candidato->proximo != lista->ultimo)
+			candidato = candidato->proximo;
+		if(candidato->proximo->proximo == NULL){
+			candidato->proximo = NULL;
+			lista->ultimo = candidato;
+			return 1; /* The last element was successfully removed. */
+		}
+		
+		return 0; /* `remover_ultimo` could not remove the last element. */
 }
 
 void imprimir_lista(LLI *inicio){
