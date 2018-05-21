@@ -97,6 +97,20 @@ int remover_ultimo(LDI *lista) /* O(n) */
 		return 0; /* `remover_ultimo` could not remove the last element. */
 }
 
+int ocorrencias(LDI *lista, int v) /* O(n) */
+{
+	int quantity = 0;
+	LLI * atual = lista->inicio;
+	
+	while(atual->proximo){
+		if(atual->valor == v)
+			quantity++;
+		atual = atual->proximo;
+	}
+	
+	return quantity;
+}
+
 void imprimir_lista(LLI *inicio){
 	int posicao = 0;
 	while(inicio)
