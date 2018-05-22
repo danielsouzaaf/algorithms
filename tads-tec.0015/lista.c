@@ -13,6 +13,19 @@ typedef struct ListaDuplaInt{
   LLI *ultimo; 
 }LDI;
 
+/*
+ * 	IFRN - CNAT  - DIATINF - TADS
+ * 	Disciplina: Algoritmos
+ * 	Professor: Jorgiano Vidal
+ * 	Aluno: Daniel Souza Affonso Ferreira
+ * 
+ * */
+
+/*Escreva o código de uma função que insira um elemento no início da lista ligada. A função deve
+retornar um ponteiro para o novo início da lista. Determine a complexidade da sua função usando a
+notação big-Oh.
+struct LL_Int * inserir_inicio(struct LL_Int *inicio, int valor); */
+
 LLI * inserir_inicio(LLI *inicio, int valor){ /* O(1) */
 
 	LLI *lli = (LLI *)malloc(sizeof(LLI));
@@ -20,6 +33,10 @@ LLI * inserir_inicio(LLI *inicio, int valor){ /* O(1) */
 	lli->valor = valor;
 	return lli;
 }
+
+/*Escreva o código da função a seguir, que retorna se um valor v está na lista cujo início é passado
+como parâmetro. Defina a complexidade usando a notação big-Oh.
+int buscar(struct LL_Int *inicio, int v);*/
 
 int buscar(LLI *inicio, int v){ /* O(n) */
 	LLI *current = inicio;
@@ -33,6 +50,10 @@ int buscar(LLI *inicio, int v){ /* O(n) */
 
 	return 0;
 }
+
+/*Escreva o código de uma função que mova o maior elemento para o final da lista. A função deve
+retornar um ponteiro para o início da lista. Defina a complexidade usando a notação big-Oh.
+struct LL_Int * mover_maior_fim(struct LL_Int *inicio);*/
 
 LLI * mover_maior_fim(LLI *inicio) /* O(n) */
 {
@@ -71,6 +92,11 @@ LLI * mover_maior_fim(LLI *inicio) /* O(n) */
 	return inicio;
 }
 
+/*Escreva uma função que receba como parâmetro o ponteiro para o início de uma lista ligada e retorne
+a quantidade de elementos na lista. Determine a complexidade da sua função usando a notação big-
+Oh.
+int quantidade(struct LL_Int *inicio);*/
+
 int quantidade (LLI *inicio) /* O(n) */
 {
 	int quantity = 1;
@@ -82,6 +108,11 @@ int quantidade (LLI *inicio) /* O(n) */
 	
 	return quantity;
 }
+
+/*Escreva o código de uma função que remova o último elemento de uma lista duplamente encadeada. A
+função deve retorna 0 se não houve remoção ou 1 se o último tiver sido removido. Determine a
+complexidade da sua função usando a notação big-Oh.
+int remover_ultimo(struct ListaDuplaInt *lista);*/
 
 int remover_ultimo(LDI *lista) /* O(n) */
 {
@@ -96,6 +127,10 @@ int remover_ultimo(LDI *lista) /* O(n) */
 		
 		return 0; /* `remover_ultimo` could not remove the last element. */
 }
+
+/*Escreva o código de uma função para contar a quantidade de vezes que um valor v ocorre em uma
+lista duplamente ligada. Determine a complexidade da sua função usando a notação big-Oh.
+int ocorrencias(struct ListaDuplaInt *lista, int v); */
 
 int ocorrencias(LDI *lista, int v) /* O(n) */
 {
