@@ -11,7 +11,7 @@ fillpreto:  beq $11, $0, fimpreto
        	addi $11, $11, -1
        	j fillpreto
 fimpreto: lui $10, 0x8080
-	ori $10, $10, 0x8080
+	ori $10, $10, 0x8080 #cinza
 	addi $11, $0, 4096
 fillcinza: beq $11, $0, fimcinza
 	sw $10, 0($9)
