@@ -12,4 +12,6 @@ int main()
 	int a;
 	a = fatorial(10);
 	printf("%d\n", a);
+	
+	return 0;
 }

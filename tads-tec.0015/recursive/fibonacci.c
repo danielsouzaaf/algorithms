@@ -14,4 +14,6 @@ int main()
 {
 	int f = fibonacci(25);
 	printf("%d\n", f);
+	
+	return 0;
 }
