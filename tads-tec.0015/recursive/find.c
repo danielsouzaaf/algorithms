@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-long find(int array[], int length, int value)
+long find(int n, int quantity)
 {
-	if (length == 0)
+	if (n == 0)
 		return 0; //Couldn't find the element
 	if (array[length - 1] == value)
 		return 1; //Could find the element
