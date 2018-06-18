@@ -14,6 +14,13 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	jal desenharbarraenergia
 	
 	jal desenharautor
+	
+	jal desenharinimigo1
+	
+	jal desenharinimigo2
+	
+	jal desenharinimigo3
+	
 	j fim
 
 # Rotina para imprimir uma sequencia de bits na tela
@@ -587,5 +594,104 @@ desenharautor:
 	jr $17
 
 
+desenharinimigo1:
+	lui $10, 0x0064 #marrom
+	ori $10, $10, 0x0000 #marrom
+	add $17, $0, $31
+	#inicio desenhar inimigo
+	addi $9, $18, 3164
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 3172
+	addi $12, $0, 8
+	jal pintar
+	
+	addi $9, $18, 3672
+	addi $12, $0, 20
+	jal pintar
+	
+	#4176
+	addi $9, $18, 4176
+	addi $12, $0, 28
+	jal pintar
+	
+	addi $9, $18, 4692
+	addi $12, $0, 8
+	jal pintar
+
+	addi $9, $18, 4704
+	addi $12, $0, 8
+	jal pintar
+	
+	jr $17
+	#fim desenhar inimigo
+	
+desenharinimigo2:
+	lui $10, 0x0064 #marrom
+	ori $10, $10, 0x0000 #marrom
+	add $17, $0, $31
+	#inicio desenhar inimigo
+	addi $9, $18, 3264
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 3272
+	addi $12, $0, 8
+	jal pintar
+	
+	addi $9, $18, 3772
+	addi $12, $0, 20
+	jal pintar
+	
+	#4176
+	addi $9, $18, 4276
+	addi $12, $0, 28
+	jal pintar
+	
+	addi $9, $18, 4792
+	addi $12, $0, 8
+	jal pintar
+
+	addi $9, $18, 4804
+	addi $12, $0, 8
+	jal pintar
+	
+	jr $17
+	#fim desenhar inimigo
+	
+desenharinimigo3:
+	lui $10, 0x0064 #marrom
+	ori $10, $10, 0x0000 #marrom
+	add $17, $0, $31
+	#inicio desenhar inimigo
+	addi $9, $18, 3364
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 3372
+	addi $12, $0, 8
+	jal pintar
+	
+	addi $9, $18, 3872
+	addi $12, $0, 20
+	jal pintar
+	
+	#4176
+	addi $9, $18, 4376
+	addi $12, $0, 28
+	jal pintar
+	
+	addi $9, $18, 4892
+	addi $12, $0, 8
+	jal pintar
+
+	addi $9, $18, 4904
+	addi $12, $0, 8
+	jal pintar
+	
+	jr $17
+	#fim desenhar inimigo
+	
 fim:
 	nop
