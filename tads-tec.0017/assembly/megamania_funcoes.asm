@@ -2,6 +2,8 @@
 
 main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escrita pra mostrar na tela
 	add $18, $9, $0 #cópia do $9 pra usar no futuro
+	addi $15, $0, 32
+	addi $16, $0, 0 #p usar no laco
 	
 	lui $10, 0x0000 #preto
 	
@@ -9,19 +11,23 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	
 	jal pintar
 	
-	jal desenharnave
-	
 	jal desenharbarraenergia
 	
 	jal desenharautor
 	
+	jal desenharnave
+	
+#lacomain:	beq $15, $0, fim
 	jal desenharinimigo1
 	
 	jal desenharinimigo2
 	
 	jal desenharinimigo3
+#	addi $16, $16, 4
+#	addi $15, $15, -1
+#	j lacomain
 	
-	j fim
+fimlacomain:	j fim
 
 # Rotina para imprimir uma sequencia de bits na tela
 #======================================
@@ -599,28 +605,33 @@ desenharinimigo1:
 	ori $10, $10, 0x0000 #marrom
 	add $17, $0, $31
 	#inicio desenhar inimigo
-	addi $9, $18, 3164
+	addi $20, $16, 3164
+	add $9, $18, $20
 	addi $12, $0, 4
 	jal pintar
 	
-	addi $9, $18, 3172
+	addi $20, $16, 3172
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 	
-	addi $9, $18, 3672
-	addi $12, $0, 20
+	addi $20, $16, 3672
+	add $9, $18, $20
+	add $12, $0, 20
 	jal pintar
 	
-	#4176
-	addi $9, $18, 4176
-	addi $12, $0, 28
+	addi $20, $16, 4176
+	add $9, $18, $20
+	add $12, $0, 28
 	jal pintar
 	
-	addi $9, $18, 4692
+	addi $20, $16, 4692
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 
-	addi $9, $18, 4704
+	addi $20, $16, 4704
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 	
