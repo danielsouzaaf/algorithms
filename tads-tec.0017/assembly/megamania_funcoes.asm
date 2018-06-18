@@ -12,6 +12,8 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	jal desenharnave
 	
 	jal desenharbarraenergia
+	
+	jal desenharautor
 	j fim
 
 # Rotina para imprimir uma sequencia de bits na tela
@@ -130,7 +132,7 @@ desenharnave:
 	
 	jr $17
 
-# Rotina para imprimir a nave na tela.
+# Rotina para imprimir a barra de energia na tela.
 #======================================
 # Parametros de entrada
 # nada
@@ -370,10 +372,220 @@ desenharbarraenergia:
 	#fim desenhar ENERGY
 	
 	#inicio desenhar vida
+	lui $10, 0xffff #amarelo
+	ori $10, $10, 0xf000 #amarelo
 	
+	
+	addi $9, $18, 22704
+	addi $12, $0, 336
+	jal pintar
+	
+	addi $9, $18, 23216
+	addi $12, $0, 336
+	jal pintar
+
+	addi $9, $18, 23728
+	addi $12, $0, 336
+	jal pintar
+	
+	addi $9, $18, 24240
+	addi $12, $0, 336
+	jal pintar
+	
+	addi $9, $18, 24752
+	addi $12, $0, 336
+	jal pintar
 	#fim desenhar vida
-	
 	jr $17
+# Rotina para imprimir a barra de energia na tela.
+#======================================
+# Parametros de entrada
+# nada
+#--------------------------------------
+# Parametro de saida
+# nada
+
+desenharautor:
+	#inicio imprimir DANIEL na tela
+	lui $10, 0xffff #amarelo
+	ori $10, $10, 0xf000 #amarelo
+	add $17, $0, $31
+	
+	#escrever D
+	addi $9, $18, 29252
+	addi $12, $0, 12
+	jal pintar
+	
+	addi $9, $18, 29764
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 29772
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30276
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30288
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30788
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30796
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 31300
+	addi $12, $0, 8
+	jal pintar
+	#fim escrever D
+	
+	#escrever A
+	addi $9, $18, 29280
+	addi $12, $0, 16
+	jal pintar
+	
+	addi $9, $18, 29792
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 29804
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30304
+	addi $12, $0, 16
+	jal pintar
+	
+	addi $9, $18, 30816
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30828
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 31328
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 31340
+	addi $12, $0, 4
+	jal pintar
+	#fim escrever A
+
+	#escrever N
+	addi $9, $18, 29308
+	addi $12, $0, 4
+	jal pintar
+
+	addi $9, $18, 29320
+	addi $12, $0, 4
+	jal pintar
+		
+	addi $9, $18, 29820
+	addi $12, $0, 8
+	jal pintar
+
+	addi $9, $18, 29832
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30332
+	addi $12, $0, 16
+	jal pintar
+	
+	addi $9, $18, 30844
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30852
+	addi $12, $0, 8
+	jal pintar
+	
+	addi $9, $18, 31356
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 31368
+	addi $12, $0, 4
+	jal pintar
+	#fim escrever N
+	
+	#escrever I
+	addi $9, $18, 29332
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 29844
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30356
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30868
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 31380
+	addi $12, $0, 4
+	jal pintar
+	#fim escrever I
+	
+	#escrever E
+	addi $9, $18, 29344
+	addi $12, $0, 12
+	jal pintar
+	
+	addi $9, $18, 29856
+	addi $12, $0, 4
+	jal pintar
+
+	addi $9, $18, 30368
+	addi $12, $0, 12
+	jal pintar
+	
+	addi $9, $18, 30880
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 31392
+	addi $12, $0, 12
+	jal pintar
+	#fim escrever E
+	#29368,29880,30392,30904,31416
+	#escrever L
+	addi $9, $18, 29368
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 29880
+	addi $12, $0, 4
+	jal pintar
+
+	addi $9, $18, 30392
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 30904
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $9, $18, 31416
+	addi $12, $0, 12
+	jal pintar
+	#fim escrever L
+	
+	#fim escrever DANIEL
+	jr $17
+
 
 fim:
 	nop
