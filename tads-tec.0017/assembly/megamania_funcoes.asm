@@ -3,6 +3,12 @@
 main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escrita pra mostrar na tela
 	add $18, $9, $0 #cópia do $9 pra usar no futuro
 	
+	lui $10, 0x0000 #preto
+	
+	addi $12, $0, 32768
+	
+	jal pintar
+	nop
 	
 
 
@@ -35,5 +41,5 @@ pintar:	beq $12, $0, fimpintar
 	addi $9, $9, 4
 	
 	addi $12, $12, -4
-	
+	j pintar
 fimpintar:	jr $31
