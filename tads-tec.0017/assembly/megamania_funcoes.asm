@@ -127,3 +127,13 @@ desenharnave:
 	
 	
 	jr $31
+
+# Rotina para imprimir a nave na tela.
+#======================================
+# Parametros de entrada
+# nada
+#--------------------------------------
+# Parametro de saida
+# nada
+
+desenharbarraenergia: 	
