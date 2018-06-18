@@ -8,10 +8,11 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	addi $12, $0, 32768
 	
 	jal pintar
-	nop
 	
 	jal desenharnave
-	nop
+	
+	jal desenharbarraenergia
+	j fim
 
 # Rotina para imprimir uma sequencia de bits na tela
 #======================================
@@ -43,6 +44,7 @@ fimpintar:	jr $31
 desenharnave: 
 	lui $10, 0x8000
 	ori $10, $10, 0x0080
+	add $17, $0, $31
 	addi $9, $18, 13476
 	addi $12, $0, 4
 	jal pintar
@@ -126,7 +128,7 @@ desenharnave:
 	jal pintar
 	
 	
-	jr $31
+	jr $17
 
 # Rotina para imprimir a nave na tela.
 #======================================
@@ -136,4 +138,57 @@ desenharnave:
 # Parametro de saida
 # nada
 
-desenharbarraenergia: 	
+desenharbarraenergia:
+	lui $10, 0x8080
+	ori $10, $10, 0x8080 #cinza
+	add $17, $0, $31
+
+	addi $9, $18, 21508
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 22020
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 22532
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 23044
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 23556
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 24068
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 24580
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 25092
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 25604
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 26116
+	addi $12, $0, 508
+	jal pintar
+	
+	addi $9, $18, 26628
+	addi $12, $0, 508
+	jal pintar
+	
+	
+	jr $17
+
+fim:
+	nop
