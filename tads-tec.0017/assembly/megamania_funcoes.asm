@@ -2,14 +2,14 @@
 
 main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escrita pra mostrar na tela
 	add $18, $9, $0 #cópia do $9 pra usar no futuro
-	addi $15, $0, 32
+	addi $15, $0, 16
 	addi $16, $0, 0 #p usar no laco
 	
 	lui $10, 0x0000 #preto
 	
-	addi $12, $0, 32768
+	#addi $12, $0, 32768
 	
-	jal pintar
+	#jal pintar
 	
 	jal desenharbarraenergia
 	
@@ -17,15 +17,16 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	
 	jal desenharnave
 	
-#lacomain:	beq $15, $0, fim
+lacomain:	beq $15, $0, fim
+	jal desdesenharinimigo1
 	jal desenharinimigo1
 	
-	jal desenharinimigo2
+#	jal desenharinimigo2
 	
-	jal desenharinimigo3
-#	addi $16, $16, 4
-#	addi $15, $15, -1
-#	j lacomain
+#	jal desenharinimigo3
+	addi $16, $16, 4
+	addi $15, $15, -1
+	j lacomain
 	
 fimlacomain:	j fim
 
@@ -698,6 +699,44 @@ desenharinimigo3:
 	jal pintar
 
 	addi $9, $18, 4904
+	addi $12, $0, 8
+	jal pintar
+	
+	jr $17
+	#fim desenhar inimigo
+	
+desdesenharinimigo1:
+	lui $10, 0x0000 #preto
+	add $17, $0, $31
+	addi $22, $16, -4
+	#inicio desenhar inimigo
+	addi $20, $22, 3164
+	add $9, $18, $20
+	addi $12, $0, 4
+	jal pintar
+	
+	addi $20, $22, 3172
+	add $9, $18, $20
+	addi $12, $0, 8
+	jal pintar
+	
+	addi $20, $22, 3672
+	add $9, $18, $20
+	add $12, $0, 20
+	jal pintar
+	
+	addi $20, $22, 4176
+	add $9, $18, $20
+	add $12, $0, 28
+	jal pintar
+	
+	addi $20, $22, 4692
+	add $9, $18, $20
+	addi $12, $0, 8
+	jal pintar
+
+	addi $20, $22, 4704
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 	
