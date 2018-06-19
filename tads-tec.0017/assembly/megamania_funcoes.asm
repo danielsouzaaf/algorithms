@@ -17,16 +17,25 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	
 	jal desenharnave
 	
-lacomain:	beq $15, $0, fim
-	jal desdesenharinimigo1
+#lacomain:	beq $15, $0, fim
+	jal refazerpreto
 	jal desenharinimigo1
 	
-#	jal desenharinimigo2
+	jal desenharinimigo2
 	
-#	jal desenharinimigo3
-	addi $16, $16, 4
-	addi $15, $15, -1
-	j lacomain
+	jal desenharinimigo3
+
+	addi $16, $16, 4096
+		
+				
+	jal desenharinimigo1
+	
+	jal desenharinimigo2
+	
+	jal desenharinimigo3
+
+#	addi $15, $15, -1
+#	j lacomain
 	
 fimlacomain:	j fim
 
@@ -644,28 +653,35 @@ desenharinimigo2:
 	ori $10, $10, 0x0000 #marrom
 	add $17, $0, $31
 	#inicio desenhar inimigo
-	addi $9, $18, 3264
+	
+	addi $20, $16, 3264
+	add $9, $18, $20
 	addi $12, $0, 4
 	jal pintar
 	
-	addi $9, $18, 3272
+	addi $20, $16, 3272
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 	
-	addi $9, $18, 3772
+	addi $20, $16, 3772
+	add $9, $18, $20
 	addi $12, $0, 20
 	jal pintar
 	
 	#4176
-	addi $9, $18, 4276
+		addi $20, $16, 4276
+	add $9, $18, $20
 	addi $12, $0, 28
 	jal pintar
 	
-	addi $9, $18, 4792
+		addi $20, $16, 4792
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 
-	addi $9, $18, 4804
+	addi $20, $16, 4804
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 	
@@ -677,71 +693,52 @@ desenharinimigo3:
 	ori $10, $10, 0x0000 #marrom
 	add $17, $0, $31
 	#inicio desenhar inimigo
-	addi $9, $18, 3364
+	
+	addi $20, $16, 3364
+	add $9, $18, $20
 	addi $12, $0, 4
 	jal pintar
 	
-	addi $9, $18, 3372
+	addi $20, $16, 3372
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 	
-	addi $9, $18, 3872
+	addi $20, $16, 3872
+	add $9, $18, $20
 	addi $12, $0, 20
 	jal pintar
 	
 	#4176
-	addi $9, $18, 4376
+	addi $20, $16, 4376
+	add $9, $18, $20
 	addi $12, $0, 28
 	jal pintar
 	
-	addi $9, $18, 4892
+	addi $20, $16, 4892
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 
-	addi $9, $18, 4904
+	addi $20, $16, 4904
+	add $9, $18, $20
 	addi $12, $0, 8
 	jal pintar
 	
 	jr $17
 	#fim desenhar inimigo
 	
-desdesenharinimigo1:
+refazerpreto:
 	lui $10, 0x0000 #preto
 	add $17, $0, $31
 	addi $22, $16, -4
-	#inicio desenhar inimigo
-	addi $20, $22, 3164
-	add $9, $18, $20
-	addi $12, $0, 4
-	jal pintar
 	
-	addi $20, $22, 3172
-	add $9, $18, $20
-	addi $12, $0, 8
-	jal pintar
-	
-	addi $20, $22, 3672
-	add $9, $18, $20
-	add $12, $0, 20
-	jal pintar
-	
-	addi $20, $22, 4176
-	add $9, $18, $20
-	add $12, $0, 28
-	jal pintar
-	
-	addi $20, $22, 4692
-	add $9, $18, $20
-	addi $12, $0, 8
-	jal pintar
-
-	addi $20, $22, 4704
-	add $9, $18, $20
-	addi $12, $0, 8
+	addi $9, $18, 3072
+	addi $12, $0, 4608
 	jal pintar
 	
 	jr $17
-	#fim desenhar inimigo
+	#fim desenhar preto
 	
 fim:
 	nop
