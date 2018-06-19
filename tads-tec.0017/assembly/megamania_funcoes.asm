@@ -2,7 +2,7 @@
 
 main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escrita pra mostrar na tela
 	add $18, $9, $0 #cópia do $9 pra usar no futuro
-	addi $15, $0, 16
+	addi $15, $0, 48
 	addi $16, $0, 0 #p usar no laco
 	
 	lui $10, 0x0000 #preto
@@ -17,7 +17,6 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	
 	jal desenharnave
 	
-lacomain:	beq $15, $0, fim
 	jal refazerpreto
 	jal desenharinimigo1
 	
@@ -26,16 +25,11 @@ lacomain:	beq $15, $0, fim
 	jal desenharinimigo3
 	
 	jal delay
-
-	addi $16, $16, 4
-
-	addi $15, $15, -1
-	j lacomain
 	
 fimlacomain:	j fim
 
 delay:
-	addi $24, $0, 327680000000
+	addi $24, $0, 100000
 ldelay:	beq $24, $0, fimdelay
 
 	addi $24, $0, -1
