@@ -17,27 +17,31 @@ main: 	lui $9, 0x1000 #$9 <= 0x10000000 //Início da memória reservada à escri
 	
 	jal desenharnave
 	
-#lacomain:	beq $15, $0, fim
+lacomain:	beq $15, $0, fim
 	jal refazerpreto
 	jal desenharinimigo1
 	
 	jal desenharinimigo2
 	
 	jal desenharinimigo3
-
-	addi $16, $16, 4096
-		
-				
-	jal desenharinimigo1
 	
-	jal desenharinimigo2
-	
-	jal desenharinimigo3
+	jal delay
 
-#	addi $15, $15, -1
-#	j lacomain
+	addi $16, $16, 4
+
+	addi $15, $15, -1
+	j lacomain
 	
 fimlacomain:	j fim
+
+delay:
+	addi $24, $0, 327680000000
+ldelay:	beq $24, $0, fimdelay
+
+	addi $24, $0, -1
+
+fimdelay: jr $31
+
 
 # Rotina para imprimir uma sequencia de bits na tela
 #======================================
