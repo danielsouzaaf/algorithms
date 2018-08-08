@@ -8,6 +8,7 @@ public class PilhaArray implements Pilha{
         this.S = new Object[tam];
     }
 
+
     public Object pop() throws EPilhaVazia {
         if (isEmpty())
                 throw new EPilhaVazia("A pilha tá vazia!");
