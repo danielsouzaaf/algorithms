@@ -6,8 +6,10 @@ public class PilhaRubroNegra implements Pilha {
 
     private int tNegra;
 
-    public PilhaRubroNegra(int tam) {
-        this.tNegra = tam - 1;
+    public PilhaRubroNegra(int tam)
+    {
+        this.S = new Object[tam];
+        this.tNegra = tam;
     }
 
     public Object pop()
@@ -47,7 +49,7 @@ public class PilhaRubroNegra implements Pilha {
     }
 
     public int size() {
-        return tRubro + 1 + (S.length - tNegra);
+        return this.tRubro + 1 + (S.length - this.tNegra);
     }
 
     public boolean isEmpty() {
@@ -84,6 +86,7 @@ public class PilhaRubroNegra implements Pilha {
 //            this.tNegra = temp.length - (this.S.length - this.tNegra);
             this.S = temp;
         }
+        System.out.println("testando se entrou");
         S[t] = o;
     }
 
@@ -91,7 +94,20 @@ public class PilhaRubroNegra implements Pilha {
         push(o, ++this.tRubro);
     }
 
-    public void pushNegro(Object o) {
+    public void pushNegra(Object o) {
         push(o, --this.tNegra);
+    }
+
+    public void printarRubro() {
+        System.out.println("Printando o lado RUBRO: ");
+        for (int i = 0; i <= tRubro; i++)
+            System.out.println(this.S[i] + " - ");
+    }
+
+    public void printarNegra() {
+        System.out.println("Printando o lado NEGRA: ");
+        System.out.println("indice tnegra:" + tNegra);
+        for (int i = S.length - 1; i > tNegra; i--)
+            System.out.println(this.S[i]);
     }
 }
