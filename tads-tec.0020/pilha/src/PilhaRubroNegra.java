@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PilhaRubroNegra implements Pilha {
 
     private Object S[];
@@ -74,20 +76,26 @@ public class PilhaRubroNegra implements Pilha {
     private void push(Object o, int t) {
         if (this.size() == this.S.length)
         {
+            System.out.println("Encheu! Size: " + this.size() + "\nLength: " + this.S.length);
             Object temp[] = new Object[this.S.length * 2];
-            for (int i = 0; i < temp.length; i++)
-                if(i == this.tRubro) {
-                    temp[i] = this.S[i];
-                    i += temp.length - this.tNegra;
-                    this.tNegra = i;
-                }
-                else
-                    temp[i] = this.S[i];
-//            this.tNegra = temp.length - (this.S.length - this.tNegra);
+            for (int i = 0; i <= this.tRubro; i++)
+                temp[i] = this.S[i];
+            for (int i = this.tNegra; i < this.S.length; i++) {
+                System.out.println("Temp.length: " + temp.length);
+                System.out.println("tNegra: " + this.tNegra);
+                System.out.println("i: " + i);
+                System.out.println("S.length: " + this.S.length);
+                temp[this.S.length + i] = this.S[i];
+            }
+            System.out.println(this.tNegra);
+            t = (this.tNegra == t) ? temp.length - 1 - this.tNegra : t;
+            this.tNegra = temp.length - 1 - this.tNegra;
             this.S = temp;
+            System.out.println(Arrays.toString(this.S));
         }
-        System.out.println("testando se entrou");
         S[t] = o;
+        System.out.println(Arrays.toString(this.S));
+
     }
 
     public void pushRubro(Object o) {
@@ -106,8 +114,11 @@ public class PilhaRubroNegra implements Pilha {
 
     public void printarNegra() {
         System.out.println("Printando o lado NEGRA: ");
-        System.out.println("indice tnegra:" + tNegra);
-        for (int i = S.length - 1; i > tNegra; i--)
+        for (int i = S.length - 1; i >= tNegra; i--)
             System.out.println(this.S[i]);
+    }
+
+    public void printarArray() {
+        System.out.println(Arrays.toString(this.S));
     }
 }
