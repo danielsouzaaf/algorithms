@@ -81,15 +81,11 @@ public class PilhaRubroNegra implements Pilha {
             for (int i = 0; i <= this.tRubro; i++)
                 temp[i] = this.S[i];
             for (int i = this.tNegra; i < this.S.length; i++) {
-                System.out.println("Temp.length: " + temp.length);
-                System.out.println("tNegra: " + this.tNegra);
-                System.out.println("i: " + i);
-                System.out.println("S.length: " + this.S.length);
                 temp[this.S.length + i] = this.S[i];
             }
             System.out.println(this.tNegra);
-            t = (this.tNegra == t) ? temp.length - 1 - this.tNegra : t;
-            this.tNegra = temp.length - 1 - this.tNegra;
+            t = (this.tNegra == t) ? temp.length - (this.S.length - this.tNegra) : t;
+            this.tNegra = temp.length - (this.S.length - this.tNegra);
             this.S = temp;
             System.out.println(Arrays.toString(this.S));
         }
