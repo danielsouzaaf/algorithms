@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PilhaRubroNegra implements Pilha {
 
     private Object S[];
@@ -6,8 +8,10 @@ public class PilhaRubroNegra implements Pilha {
 
     private int tNegra;
 
-    public PilhaRubroNegra(int tam) {
-        this.tNegra = tam - 1;
+    public PilhaRubroNegra(int tam)
+    {
+        this.S = new Object[tam];
+        this.tNegra = tam;
     }
 
     public Object pop()
@@ -58,7 +62,7 @@ public class PilhaRubroNegra implements Pilha {
     }
 
     public int size() {
-        return tRubro + 1 + (S.length - tNegra);
+        return this.tRubro + 1 + (S.length - this.tNegra);
     }
 
     public boolean isEmptyRubro() {
@@ -89,26 +93,45 @@ public class PilhaRubroNegra implements Pilha {
     private void push(Object o, int t) {
         if (this.size() == this.S.length)
         {
+            System.out.println("Encheu! Size: " + this.size() + "\nLength: " + this.S.length);
             Object temp[] = new Object[this.S.length * 2];
-            for (int i = 0; i < temp.length; i++)
-                if(i == this.tRubro) {
-                    temp[i] = this.S[i];
-                    i += temp.length - this.tNegra;
-                    this.tNegra = i;
-                }
-                else
-                    temp[i] = this.S[i];
-//            this.tNegra = temp.length - (this.S.length - this.tNegra);
+            for (int i = 0; i <= this.tRubro; i++)
+                temp[i] = this.S[i];
+            for (int i = this.tNegra; i < this.S.length; i++) {
+                temp[this.S.length + i] = this.S[i];
+            }
+            System.out.println(this.tNegra);
+            t = (this.tNegra == t) ? temp.length - (this.S.length - this.tNegra) : t;
+            this.tNegra = temp.length - (this.S.length - this.tNegra);
             this.S = temp;
+            System.out.println(Arrays.toString(this.S));
         }
         S[t] = o;
+        System.out.println(Arrays.toString(this.S));
+
     }
 
     public void pushRubro(Object o) {
         push(o, ++this.tRubro);
     }
 
-    public void pushNegro(Object o) {
+    public void pushNegra(Object o) {
         push(o, --this.tNegra);
+    }
+
+    public void printarRubro() {
+        System.out.println("Printando o lado RUBRO: ");
+        for (int i = 0; i <= tRubro; i++)
+            System.out.println(this.S[i] + " - ");
+    }
+
+    public void printarNegra() {
+        System.out.println("Printando o lado NEGRA: ");
+        for (int i = S.length - 1; i >= tNegra; i--)
+            System.out.println(this.S[i]);
+    }
+
+    public void printarArray() {
+        System.out.println(Arrays.toString(this.S));
     }
 }
