@@ -23,6 +23,11 @@ public class PilhaRubroNegra implements Pilha {
         return null;
     }
 
+    public boolean isEmpty()
+    {
+        return isEmptyNegra() && isEmptyRubro();
+    }
+
     public void push(Object o){
 
     }
@@ -39,12 +44,18 @@ public class PilhaRubroNegra implements Pilha {
     }
 
     public Object popNegra() throws EPilhaVazia {
+        if (isEmptyNegra())
+            throw new EPilhaVazia("A pilha tá vazia!");
+
         Object popped = pop(this.tNegra);
         this.tNegra++;
         return popped;
     }
 
     public Object popRubro() throws EPilhaVazia {
+        if (isEmptyRubro())
+            throw new EPilhaVazia("A pilha tá vazia!");
+
         Object popped = pop(this.tRubro);
         this.tRubro--;
         return popped;
@@ -54,22 +65,28 @@ public class PilhaRubroNegra implements Pilha {
         return this.tRubro + 1 + (S.length - this.tNegra);
     }
 
-    public boolean isEmpty() {
-        return tRubro < 0 && tNegra == S.length;
+    public boolean isEmptyRubro() {
+        return tRubro < 0;
+    }
+
+    public boolean isEmptyNegra() {
+        return tNegra == S.length;
     }
 
     private Object top(int t) throws EPilhaVazia {
-        if (isEmpty())
-            throw new EPilhaVazia("A pilha tá vazia!");
-
-        return S[t];
+        return 'a';
     }
 
     public Object topRubro() throws EPilhaVazia {
+        if (isEmptyRubro())
+            throw new EPilhaVazia("A pilha tá vazia!");
         return top(tRubro);
     }
 
     public Object topNegra() throws EPilhaVazia {
+        if (isEmptyNegra())
+            throw new EPilhaVazia("A pilha tá vazia!");
+
         return top(tNegra);
     }
 

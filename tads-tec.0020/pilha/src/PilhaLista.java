@@ -2,19 +2,20 @@ public class PilhaLista implements Pilha{
 
     private No atual, inicio;
 
-    public PilhaLista(int tam) {
-        this.S = new Object[tam];
-    }
+    private int t = -1;
 
     public Object pop() throws EPilhaVazia {
         if (isEmpty())
                 throw new EPilhaVazia("A pilha tá vazia!");
 
-        Object temp = S[t];
-        S[t] = null;
+        No n = inicio;
+        while(n.getProximo() != atual)
+            n = n.getProximo();
+        No popped = n.getProximo();
+        n.setProximo(null);
         t--;
 
-        return temp;
+        return popped.getElemento();
     }
 
     public int size() {
@@ -29,20 +30,18 @@ public class PilhaLista implements Pilha{
         if (isEmpty())
             throw new EPilhaVazia("A pilha tá vazia!");
 
-        return S[t];
+        return atual.getElemento();
     }
 
     public void push(Object o) {
-        if (t + 1 == S.length)
-        {
-            Object temp[] = new Object[S.length * 2];
+        No node = new No();
+        node.setElemento(o);
+        if(t < 0)
+            inicio = node;
+        atual.setProximo(node);
+        atual = node;
+        ++t;
 
-            for (int i = 0; i <= t; i++)
-                temp[i] = S[i];
-
-            S = temp;
-        }
-        S[++t] = o;
     }
 
 
