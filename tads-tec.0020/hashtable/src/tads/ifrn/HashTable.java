@@ -48,7 +48,7 @@ public class HashTable<K, V> {
         return hc % this.bucketArray.length;
     }
 
-    public void put(K key, V value) throws Exception {
+    public void putListaLigada(K key, V value) throws Exception {
         int bi = HashFunction(key);
         HTPair data = new HTPair(key, value);
         if (this.bucketArray[bi] == null) {
@@ -128,7 +128,7 @@ public class HashTable<K, V> {
         for (LinkedList<HTPair> ob : oba) {
             while (ob != null && !ob.isEmpty()) {
                 HTPair pair = ob.removeFirst();
-                this.put(pair.key, pair.value);
+                this.putListaLigada(pair.key, pair.value);
             }
         }
     }
